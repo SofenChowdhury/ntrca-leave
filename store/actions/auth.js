@@ -110,7 +110,7 @@ export const auth = (email, password) => {
         }
       })
       .catch((err) => {
-        alert(`${err?.response?.data?.error} ' Login credential does not match!'`);
+        alert(`'Login credential does not match!!!'`);
         // toast(`${err?.response?.data?.error} 'Credential does not match!'`, { hideProgressBar: true, autoClose: 2000, type: 'error' })
         console.log(err);
         // dispatch(authNotValid(err?.response?.data?.error));
