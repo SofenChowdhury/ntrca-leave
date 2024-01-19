@@ -36,6 +36,7 @@ import KeyIcon from "@mui/icons-material/Key";
 //Notification
 import Notify from "./Notify";
 
+
 const Topbar = ({ token, isCollapsed, name }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -140,7 +141,6 @@ const Topbar = ({ token, isCollapsed, name }) => {
           </IconButton> */}
 
           <Notify/>
-
           <Button
             endIcon={<ArrowDropDownIcon />}
             aria-controls={open ? "basic-menu" : undefined}
