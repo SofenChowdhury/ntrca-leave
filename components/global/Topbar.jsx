@@ -34,7 +34,7 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import KeyIcon from "@mui/icons-material/Key";
 
 //Notification
-// import Notify from "./Notify";
+import Notify from "./Notify";
 
 const Topbar = ({ token, isCollapsed, name }) => {
   const theme = useTheme();
@@ -139,7 +139,7 @@ const Topbar = ({ token, isCollapsed, name }) => {
             <LogoutIcon />
           </IconButton> */}
 
-          {/* <Notify/> */}
+          <Notify/>
 
           <Button
             endIcon={<ArrowDropDownIcon />}
