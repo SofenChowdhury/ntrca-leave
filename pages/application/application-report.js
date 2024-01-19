@@ -23,7 +23,7 @@ import {
   Pagination,
   TextField,
 } from "@mui/material";
-import ApplicationReportTable from "../../components/data-table/AdvanceReportTable";
+import ApplicationReportTable from "../../components/data-table/ApplicationReportTable";
 
 const leaveApplicationReport = ({ token }) => {
   const theme = useTheme();
