@@ -263,8 +263,8 @@ const leaveApplicationReport = ({ token }) => {
 
    </div>
    <br></br>
-      <AdvanceReportTable leaveType={leaveType} leaveStatus={leaveStatus} selectedEmp={selectedEmp} leaveStartDate={leaveStartDate}
-      leaveEndDate={leaveEndDate}  appliedDate={appliedDate}></AdvanceReportTable>
+      <ApplicationReportTable leaveType={leaveType} leaveStatus={leaveStatus} selectedEmp={selectedEmp} leaveStartDate={leaveStartDate}
+      leaveEndDate={leaveEndDate}  appliedDate={appliedDate}></ApplicationReportTable>
    
      
     </>
