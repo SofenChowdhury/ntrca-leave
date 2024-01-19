@@ -86,7 +86,7 @@ export const auth = (email, password) => {
     axios
       .post(apiUrl, authData)
       .then((response) => {
-        if (response.status==200) {
+        if (response.status===200) {
           toast(`Login Successfully done by - ${response?.data?.user?.name}`, { hideProgressBar: true, autoClose: 2000, type: 'success' })
           dispatch(
             authSuccess(
