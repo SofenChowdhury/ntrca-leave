@@ -5,7 +5,7 @@
 // export const IMAGE_URL = "https://dpcsict.xyz/backend/public/profile-picture/";
 // export const SIGN_URL = "https://dpcsict.xyz/backend/public/signature/";
 
-export const BASE_URL = "http://ntrcaleave.xyz/api/";
+export const BASE_URL = "https://ntrcaleave.xyz/api/";
 // export const IMAGE_URL = "http://localhost:8000/profile-picture/";
 // export const SIGN_URL = "http://localhost:8000/signature/";
 // export const BASE_URL = "https://saikat.mndmbera.edu.bd/api/";
