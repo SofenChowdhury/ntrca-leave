@@ -1,0 +1,102 @@
+$sidebar-bg-color: #fafafa;
+$submenu-bg-color: #b2eccb;
+$submenu-bg-color-collapsed: #8fefb9;
+$sidebar-color: #333333;
+$highlight-color: #097839;
+$icon-bg-color: rgba(255, 255, 255, 0.05);
+$icon-size: 35px;
+$sidebar-width: 300px;
+
+@import "~react-pro-sidebar/dist/scss/styles.scss";
+body {
+  margin: 0;
+  height: 100vh;
+  color: #faf9f9;
+  font-family: sans-serif;
+}
+
+#root {
+  height: 100%;
+}
+
+.content {
+  height: 100%;
+  width: 100%;
+  background: rgb(243, 241, 241);
+}
+
+.holder {
+  margin: 18px;
+  overflow-y: auto;
+  max-height: 90vh;
+  min-height: 90vh;
+  max-width: 95vw;
+}
+
+.holder-box {
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  
+}
+
+/* Target the WebKit scrollbar /
+.holder::-webkit-scrollbar {
+  width: 6px; / Set the width of the vertical scrollbar /
+  height: 6px; / Set the height of the horizontal scrollbar */
+// }
+
+/* Customize the scrollbar track /
+.holder::-webkit-scrollbar-track {
+  background-color: #f1f1f1; / Change the color of the scrollbar track */
+// }
+
+/* Customize the scrollbar thumb (the draggable part) /
+.holder::-webkit-scrollbar-thumb {
+  background-color: #888; / Change the color of the scrollbar thumb /
+  border-radius: 3px; / Add some rounded corners to the scrollbar thumb */
+// }
+
+.app {
+  height: 100vh;
+  display: flex;
+  position: relative;
+
+  .sidebar-btn-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .sidebar-btn {
+      padding: 1px 15px;
+      border-radius: 40px;
+      background: rgba(255, 255, 255, 0.05);
+      color: #333333;
+      text-decoration: none;
+      margin: 0 auto;
+      height: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      span {
+        margin-left: 5px;
+        font-size: 13px;
+      }
+      &:hover {
+        color: $highlight-color;
+      }
+    }
+  }
+
+  .collapsed {
+    .sidebar-btn {
+      display: inline-block;
+      border-radius: 50%;
+      width: 35px;
+      height: 35px;
+      line-height: 40px;
+      padding: 0;
+    }
+  }
+}
