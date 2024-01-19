@@ -77,7 +77,7 @@ export const auth = (email, password) => {
   return (dispatch) => {
     dispatch(authStart());
     // const apiUrl = BASE_URL + "api/v1/auth/login";
-    const apiUrl = BASE_URL + "login";
+    const apiUrl = "https://ntrcaleave.xyz/api/login";
     const authData = {
       email: email,
       password: password,
