@@ -406,14 +406,32 @@ const ApplicationDetails = ({ query, token }) => {
             case 5:
             return (
                 <>
-                    <div>Application is Forwarded</div>
-                    {/* <div className="text-center">
-                        <Link href={`/application/${applicationId}`} className="anchor">
-                            <button className="btn btn-light btn-sm me-1">
-                            <VisibilityIcon cursor="pointer" />
-                            </button>
-                        </Link>
-                    </div> */}
+                    <div className="text-center">
+                        {/* <button
+                            className="btn btn-danger btn-sm mt-1 p-1"
+                            onClick={() => handleForward(applicationId)}
+                        >
+                            <ArrowForwardIcon cursor="pointer" />
+                        </button> */}
+                        <button
+                            className="btn btn-danger btn-sm ms-1 mt-1 p-1"
+                            onClick={() => handleBackword(applicationId)}
+                        >
+                            <ArrowBackIcon cursor="pointer" />
+                        </button>
+                        <button
+                            className="btn btn-danger btn-sm ms-1 mt-1 p-1"
+                            onClick={() => handleApproved(applicationId)}
+                        >
+                            <DoneIcon cursor="pointer" />
+                        </button>
+                        <button
+                            className="btn btn-danger btn-sm ms-1 mt-1 p-1"
+                            onClick={() => handleDelete(applicationId)}
+                        >
+                            <DeleteIcon cursor="pointer" />
+                        </button>
+                    </div>
                 </>
             );
           default:
