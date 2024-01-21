@@ -75,11 +75,6 @@ const MyApplicationTable = ({ token,leaveType,leaveStatus,selectedEmp,leaveStart
                   <EditIcon cursor="pointer" />
                 </button>
               </Link> */}
-              <Link href={`/application/edit/${applicationId}`} className="anchor">
-                <button className="btn btn-light btn-sm me-1">
-                  <EditIcon cursor="pointer" />
-                </button>
-              </Link>
               <Link href={`/application/${applicationId}`} className="anchor">
                 <button className="btn btn-light btn-sm me-1">
                   <VisibilityIcon cursor="pointer" />
@@ -117,14 +112,14 @@ const MyApplicationTable = ({ token,leaveType,leaveStatus,selectedEmp,leaveStart
         case 3:
           return (
             <>
-              <Link href={`/application/edit/${applicationId}`} className="anchor">
-                <button className="btn btn-light btn-sm me-1">
-                  <EditIcon cursor="pointer" />
-                </button>
-              </Link>
               <Link href={`/application/${applicationId}`} className="anchor">
                 <button className="btn btn-light btn-sm me-1">
                   <VisibilityIcon cursor="pointer" />
+                </button>
+              </Link>
+              <Link href={`/application/edit/${applicationId}`} className="anchor">
+                <button className="btn btn-light btn-sm me-1">
+                  <EditIcon cursor="pointer" />
                 </button>
               </Link>
               {/* <Link href={`/application/details/${applicationId}`} className="anchor">
@@ -148,11 +143,6 @@ const MyApplicationTable = ({ token,leaveType,leaveStatus,selectedEmp,leaveStart
         case 4:
           return (
             <>
-              <Link href={`/application/edit/${applicationId}`} className="anchor">
-                <button className="btn btn-light btn-sm me-1">
-                  <EditIcon cursor="pointer" />
-                </button>
-              </Link>
               <Link href={`/application/${applicationId}`} className="anchor">
                 <button className="btn btn-light btn-sm me-1">
                   <VisibilityIcon cursor="pointer" />
@@ -163,11 +153,6 @@ const MyApplicationTable = ({ token,leaveType,leaveStatus,selectedEmp,leaveStart
           case 5:
           return (
             <>
-              <Link href={`/application/edit/${applicationId}`} className="anchor">
-                <button className="btn btn-light btn-sm me-1">
-                  <EditIcon cursor="pointer" />
-                </button>
-              </Link>
               <Link href={`/application/${applicationId}`} className="anchor">
                 <button className="btn btn-light btn-sm me-1">
                   <VisibilityIcon cursor="pointer" />

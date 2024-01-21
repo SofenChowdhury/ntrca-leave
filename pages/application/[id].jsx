@@ -117,13 +117,10 @@ const convertToBanglaDate = (isoDate) => {
         headers: { Authorization: "Bearer " + token },
       })
       .then((res) => {
-       
-        if (res.data) {
-          console.log(res.data);
-        //   setLoader(false);
-          setDetails(res.data)
+        if (res?.status === 200) {
+          setDetails(res?.data)
         } else {
-          setErrors(res.data.message);
+          setErrors(res?.data?.message);
         }
       })
       .catch((error) => {
@@ -169,7 +166,7 @@ const convertToBanglaDate = (isoDate) => {
       {!loader ? (
         <CircularProgress />
       ) : (
-        (roles != 1) &&
+        // (roles != 1) &&
         <>
         {/* {showCustomerModal ? (
         <div>

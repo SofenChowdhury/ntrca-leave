@@ -688,8 +688,6 @@ const Sidebar = ({ name, roles, company, isCollapsed, isRecorder, isApprover, em
               )}
               
               {/* Leave */}
-              {
-              (roles != 1) &&
                 <SubMenu
                   title="Leave Application"
                   icon={<AccountTreeIcon />}
@@ -701,6 +699,10 @@ const Sidebar = ({ name, roles, company, isCollapsed, isRecorder, isApprover, em
                   }}
                   open={opened[10].isOpen}
                 >
+                  {(roles != 1) &&
+                  <>
+                 
+                  
                   <Item
                     title="Message Box"
                     to="/application/messageBox"
@@ -750,8 +752,10 @@ const Sidebar = ({ name, roles, company, isCollapsed, isRecorder, isApprover, em
                     width={width}
                   />
                   }
+                  </>
+                  }
                 {
-                  (roles !=3) && 
+                  (roles == 1) && 
                   <Item
                     title="Advance Report"
                     to="/application/advance-report"
@@ -763,7 +767,6 @@ const Sidebar = ({ name, roles, company, isCollapsed, isRecorder, isApprover, em
                   />
                 }
                 </SubMenu>
-              }
 
               {(roles != 1) &&
                 <SubMenu
@@ -877,7 +880,7 @@ const Sidebar = ({ name, roles, company, isCollapsed, isRecorder, isApprover, em
                 </SubMenu>
               }
 
-              {(roles == 1) &&
+              {roles == 1 &&
                 <Item
                 title="Activity"
                 to="/activity/log"

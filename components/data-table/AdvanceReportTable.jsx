@@ -161,17 +161,17 @@ const AdvanceReportTable = ({ token,leaveType,leaveStatus,selectedEmp,leaveStart
 
                 <td>
                   {/* <Link href={`/users/updateUser/${user.employee_id}`} className="anchor"> */}
-                  <Link href={`/application/edit/${user?.id}`} className="anchor">
+                  {/* <Link href={`/application/edit/${user?.id}`} className="anchor">
                     <button className="btn btn-light btn-sm me-1">
                       <EditIcon cursor="pointer" />
                     </button>
-                  </Link>
+                  </Link> */}
                   <Link href={`/application/${user?.id}`} className="anchor">
                     <button className="btn btn-light btn-sm me-1">
                       <VisibilityIcon cursor="pointer" />
                     </button>
                   </Link>
-                  <Link href={`/application/details/${user?.id}`} className="anchor">
+                  <Link href={`/application/view/${user?.id}`} className="anchor">
                     <button className="btn btn-light btn-sm me-1">
                       <InfoIcon cursor="pointer" />
                     </button>
