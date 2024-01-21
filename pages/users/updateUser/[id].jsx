@@ -172,7 +172,7 @@ const UserDetails = ({ query, token }) => {
         <Paper elevation={3} sx={{ p: 3 }}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={9}>
-              <img height={250} alt="User Profile" src={IMAGE_URL + employeeDetails.user.profile_picture} />
+              <img height={250} alt="User Profile" src={IMAGE_URL + employeeDetails?.user?.profile_picture} />
             </Grid>
             <Grid item xs={12} sm={3} sx={{ textAlign: "left" }}>
               <Typography variant="h4" color={colors.greenAccent[300]}>Employee ID: {employeeDetails?.emp_id}</Typography>
@@ -193,8 +193,8 @@ const UserDetails = ({ query, token }) => {
       )}
     </Box>
     <Box p={3} display="flex" justifyContent="space-between">
-      <Typography variant="h4" color={colors.greenAccent[300]}>Total Casual leave : {leaves.totalApprovedLeave}</Typography>
-      <Typography variant="h4" color={colors.greenAccent[300]}>Remaining leave : {leaves.remainingLeave}</Typography>
+      <Typography variant="h4" color={colors.greenAccent[300]}>Total Casual leave : {leaves?.totalApprovedLeave}</Typography>
+      <Typography variant="h4" color={colors.greenAccent[300]}>Remaining leave : {leaves?.remainingLeave}</Typography>
     </Box>
     <Box p={3}>
     <div className="row">

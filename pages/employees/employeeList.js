@@ -65,12 +65,14 @@ const employeeList = ({ token,roles}) => {
   // DeleteHandle
   const handleDelete = (employeeId) => {
     if (window.confirm("Are you sure you want to delete this employee?")){
-    const apiUrl = BASE_URL + `employees/${employeeId}`;
+    const apiUrl = BASE_URL + "employees/" + employeeId;
     axios
-    .post(apiUrl, {
+    .post(apiUrl,"", {
     headers: { Authorization: "Bearer " + token },
     })
     .then((res) => {
+      console.log("res");
+      console.log(res);
     if (res.status === 200) {
       console.log(res);
       setEmployees(employees.filter((employee) => employee.emp_id !== employeeId));
@@ -171,19 +173,19 @@ const employeeList = ({ token,roles}) => {
                   <td>{employee?.designation?.desg_nm}</td>
                   <td>{employee?.department?.department_name}</td>
                   <td>
-                    <Link href={`/employees/updateEmployee/${employee.emp_id}`} className="anchor">
+                    <Link href={`/employees/updateEmployee/${employee?.emp_id}`} className="anchor">
                       <button className="btn btn-light btn-sm me-1">
                         <EditIcon cursor="pointer" />
                       </button>
                     </Link>
-                    <Link href={`/users/updateUser/${employee.emp_id}`} className="anchor">
+                    <Link href={`/users/updateUser/${employee?.emp_id}`} className="anchor">
                       <button className="btn btn-light btn-sm me-1">
                         <Person2Icon cursor="pointer" />
                       </button>
                     </Link>
                     <button
                       className="btn btn-danger btn-sm"
-                      onClick={() => handleDelete(employee.emp_id)}
+                      onClick={() => handleDelete(employee?.emp_id)}
                       >
                         <DeleteIcon cursor="pointer" />
                     </button>
