@@ -38,7 +38,7 @@ import moment from 'moment';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import InfoIcon from '@mui/icons-material/Info';
 
-const ApplicationDetails = ({ query, token }) => {
+const ApplicationDetails = ({ query, token, isRecorder }) => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
 
@@ -295,6 +295,8 @@ const ApplicationDetails = ({ query, token }) => {
                         >
                             <ArrowBackIcon cursor="pointer" />
                         </button>
+                        {!(isRecorder == 1) &&
+                        <>
                         <button
                             className="btn btn-danger btn-sm ms-1 mt-1 p-1"
                             onClick={() => handleApproved(applicationId)}
@@ -307,6 +309,8 @@ const ApplicationDetails = ({ query, token }) => {
                         >
                             <DeleteIcon cursor="pointer" />
                         </button>
+                        </>
+                        }
                     </div>
                 </>
             );
@@ -326,6 +330,8 @@ const ApplicationDetails = ({ query, token }) => {
                         >
                             <ArrowBackIcon cursor="pointer" />
                         </button>
+                        {!(isRecorder == 1) &&
+                        <>
                         <button
                             className="btn btn-danger btn-sm ms-1 mt-1 p-1"
                             onClick={() => handleApproved(applicationId)}
@@ -338,6 +344,7 @@ const ApplicationDetails = ({ query, token }) => {
                         >
                             <DeleteIcon cursor="pointer" />
                         </button>
+                        </>}
                     </div>
                 </>
             );
@@ -357,6 +364,8 @@ const ApplicationDetails = ({ query, token }) => {
                         >
                             <ArrowBackIcon cursor="pointer" />
                         </button>
+                        {!(isRecorder == 1) &&
+                        <>
                         <button
                             className="btn btn-danger btn-sm ms-1 mt-1 p-1"
                             onClick={() => handleApproved(applicationId)}
@@ -369,6 +378,7 @@ const ApplicationDetails = ({ query, token }) => {
                         >
                             <DeleteIcon cursor="pointer" />
                         </button>
+                        </>}
                     </div>
                 </>
             );
@@ -388,6 +398,8 @@ const ApplicationDetails = ({ query, token }) => {
                     >
                         <ArrowBackIcon cursor="pointer" />
                     </button>
+                    {!(isRecorder == 1) &&
+                    <>
                     <button
                         className="btn btn-danger btn-sm ms-1 mt-1 p-1"
                         onClick={() => handleApproved(applicationId)}
@@ -400,6 +412,7 @@ const ApplicationDetails = ({ query, token }) => {
                     >
                         <DeleteIcon cursor="pointer" />
                     </button>
+                    </>}
                 </div>
               </>
             );
@@ -419,6 +432,8 @@ const ApplicationDetails = ({ query, token }) => {
                         >
                             <ArrowBackIcon cursor="pointer" />
                         </button>
+                        {!(isRecorder == 1) &&
+                        <>
                         <button
                             className="btn btn-danger btn-sm ms-1 mt-1 p-1"
                             onClick={() => handleApproved(applicationId)}
@@ -431,6 +446,7 @@ const ApplicationDetails = ({ query, token }) => {
                         >
                             <DeleteIcon cursor="pointer" />
                         </button>
+                        </>}
                     </div>
                 </>
             );
@@ -603,6 +619,7 @@ const ApplicationDetails = ({ query, token }) => {
                                                 />
                                                 <br></br>
                                                 <br></br>
+                                                {!(isRecorder == 1) &&
                                                 <RangePicker
                                                     label="Date"
                                                     variant="outlined"
@@ -613,6 +630,7 @@ const ApplicationDetails = ({ query, token }) => {
                                                     className="shadow-input"
                                                 // disabledDate={disabledDate}
                                                 />
+                                                }
                                             </div>
                                         )}
 
@@ -720,6 +738,13 @@ ApplicationDetails.getInitialProps = async ({ query }) => {
 const mapStateToProps = (state) => {
     return {
         token: state.auth.token,
+        name: state?.auth?.name,
+        email: state?.auth?.email,
+        roles: state?.auth?.roles,
+        company: state?.auth?.company,
+        isApprover: state?.auth?.isApprover,
+        isRecorder: state?.auth?.isRecorder,
+        isCollapsed: state?.collapse?.isCollapse,
     };
 };
 
