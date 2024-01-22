@@ -448,6 +448,7 @@ const leaveApplication = ({ token, roles }) => {
         </TextField>
       </div>
       <div className="col-md-4">
+        {/* View Selection File*/}
         {file ? (
           <div>
             <iframe src={file} width="100%" height="200px" display="block" position="relative" />
@@ -473,7 +474,7 @@ const leaveApplication = ({ token, roles }) => {
         <TextField
           onChange={(e) => setApproval_id(+e.target?.value)}
           select
-          label="Approver Name"
+          label="Approver Name (Optional)"
           size="small"
           fullWidth
           value={approval_id || ""}
