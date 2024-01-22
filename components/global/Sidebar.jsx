@@ -840,7 +840,7 @@ const Sidebar = ({ name, roles, company, isCollapsed, isRecorder, isApprover, em
                       />
                       <Item
                         title="Application Status"
-                        to="/application/advance-report"
+                        to="/application/application-report"
                         icon={<ReceiptLongIcon />}
                         selected={selected}
                         setSelected={setSelected}

@@ -69,12 +69,61 @@ const leaveApplication = ({ token, roles }) => {
   const [selectedLeaveType, setSelectedLeaveType] = useState("");
   const [selectedStartDate, setSelectedStartDate] = useState("");
   const [selectedEndDate, setSelectedEndDate] = useState("");
+  const [file, setFile] = useState(null);
 
   // const [reasonOptions] = useState(["Physical Illness", "Family Issue", "Others"]);
   // const [selectedReason, setSelectedReason] = useState("");
   // const [openOthersField, setOpenOthersField] = useState(false);
 
   // // ... (Your other functions)
+
+  const onChangeFile = async (e) => {
+    const acceptedImageTypes = [
+      "application/pdf"
+    ];
+    let files = e.target.files || e.dataTransfer.files;
+    console.log("files");
+    console.log(files);
+    console.log(files.length);
+
+    if (files.length > 0) {
+      console.log("e.target.files[0].size");
+      console.log(e.target.files[0].size);
+      if (e.target.files[0].size > 3 * 1000 * 1024){
+        alert("File with maximum size of 3MB is allowed !!");
+      }else{
+        if (acceptedImageTypes.includes(files[0].type)) {
+          uploadDocuments(e, files[0]);
+        } else {
+          alert("Please only enter PDF file (Others file is not allowed)!");
+          e.target.value = "";
+          setFile(null);
+        }
+      }
+    }
+  };
+
+  const uploadDocuments = async (event, file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = async () => {
+        try {
+          const response = await submitImageFile(reader.result, file.name);
+          resolve(response);
+        } catch (err) {
+          reject(err);
+        }
+      };
+      reader.onerror = (error) => {
+        reject(error);
+      };
+      reader.readAsDataURL(file);
+    });
+  };
+
+  const submitImageFile = (result, name) => {
+    setFile(result);
+  };
 
   // const handleReasonChange = (e) => {
   //   const selectedValue = e.target.value;
@@ -316,6 +365,7 @@ const leaveApplication = ({ token, roles }) => {
       end: leaveEndDate,
       stay_location: stayLocation,
       reviewer_id: recorder_id,
+      files: file
     };
     const apiLeaveApplication = BASE_URL + "leave/create";
     const config = {
@@ -366,7 +416,7 @@ const leaveApplication = ({ token, roles }) => {
     </div>
   
     <div className="row mt-4">
-      <div className="col-md-6">
+      <div className="col-md-4">
         {/* Leave Type Selection */}
         <TextField
           onChange={(e) => setLeaveType_id(+e?.target?.value)}
@@ -383,6 +433,37 @@ const leaveApplication = ({ token, roles }) => {
             </MenuItem>
           ))}
         </TextField>
+      </div>
+      <div className="col-md-4">
+        {/* File Selection */}
+        <TextField
+          variant="outlined"
+          className="shadow-input"
+          size="small"
+          fullWidth
+          accept="application/*"
+          type="file"
+          onChange={onChangeFile}
+        >
+        </TextField>
+      </div>
+      <div className="col-md-4">
+        {file ? (
+          <div>
+            <iframe src={file} width="100%" height="200px" display="block" position="relative" />
+          </div>
+          ) : (
+          <div
+            style={{
+              textAlign: "center",
+              padding: "10px",
+              background: "",
+            }}
+          >
+            <p>Upload file shown here</p>
+          </div>
+          )
+        }
       </div>
     </div>
   

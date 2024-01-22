@@ -171,11 +171,11 @@ const ApplicationReportTable = ({ token,leaveType,leaveStatus,selectedEmp,leaveS
                       <VisibilityIcon cursor="pointer" />
                     </button>
                   </Link>
-                  {/* <Link href={`/application/details/${user?.id}`} className="anchor">
+                  <Link href={`/application/view/${user?.id}`} className="anchor">
                     <button className="btn btn-light btn-sm me-1">
                       <InfoIcon cursor="pointer" />
                     </button>
-                  </Link> */}
+                  </Link>
                 </td>
 
                 {/* <td>
