@@ -29,6 +29,7 @@ import CustomModal from "../../components/CustomModal/CustomModal";
 //axios
 import axios from "axios";
 import { BASE_URL } from "../../base";
+import TextArea from "antd/es/input/TextArea";
 //import MyDataTable from "../../components/data-table/MyDataTable";
 
 // import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
@@ -625,7 +626,7 @@ const leaveApplication = ({ token, roles }) => {
         </TextField> 
 
         { (application_Reason == "Others") &&
-          <TextField
+          <TextArea
             label="Reason"
             variant="outlined"
             size="small"
@@ -633,6 +634,8 @@ const leaveApplication = ({ token, roles }) => {
             fullWidth
             onChange={(e) => setApplicationReasonText(e?.target?.value)}
             className="shadow-input mt-3"
+            style={{height:"300px"}}
+            placeholder="Enter reason here..."
           /> 
         }
      
