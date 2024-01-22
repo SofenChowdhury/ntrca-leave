@@ -416,7 +416,7 @@ const leaveApplication = ({ token, roles }) => {
     </div>
   
     <div className="row mt-4">
-      <div className="col-md-4">
+      <div className="col-md-3">
         {/* Leave Type Selection */}
         <TextField
           onChange={(e) => setLeaveType_id(+e?.target?.value)}
@@ -434,7 +434,7 @@ const leaveApplication = ({ token, roles }) => {
           ))}
         </TextField>
       </div>
-      <div className="col-md-4">
+      <div className="col-md-3">
         {/* File Selection */}
         <TextField
           variant="outlined"
@@ -447,7 +447,7 @@ const leaveApplication = ({ token, roles }) => {
         >
         </TextField>
       </div>
-      <div className="col-md-4">
+      <div className="col-md-6">
         {/* View Selection File*/}
         {file ? (
           <div>
