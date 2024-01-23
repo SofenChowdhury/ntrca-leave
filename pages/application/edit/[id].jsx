@@ -122,9 +122,6 @@ const editLeaveApplication = ({ token, query, roles }) => {
     })
     .then((res) => {
       if (res?.status === 200) {
-        console.log("res?.data");
-        console.log(res?.data);
-        console.log(res?.data?.application?.reviewer?.emp_id);
         setApproval_id(res?.data?.application?.approval_id);
         setRecorder_id(res?.data?.application?.reviewer_id);
         setApplicationReason(res?.data?.application?.reason);
@@ -137,10 +134,6 @@ const editLeaveApplication = ({ token, query, roles }) => {
         if(approvedLeave || numberOfDays || leaveEndDate || leaveStartDate || stayLocation || application_Reason || leaveTypes || recorder_id || approval_id){
           setLoader(false)
         }
-        // setTimeout(
-        //   () => setLoader(false), 
-        //   500
-        // );
       }
     })
     .catch((error) => {
@@ -287,17 +280,17 @@ const editLeaveApplication = ({ token, query, roles }) => {
     const validationErrors = [];
 
     // Check each required field and update validationErrors array
-    if (!approval_id) {
-      validationErrors.push("Please select an Approver Name");
-    }
+    // if (!approval_id) {
+    //   validationErrors.push("Please select an Approver Name");
+    // }
   
     if (!recorder_id) {
       validationErrors.push("Please select a Recorder Name");
     }
   
-    if (!application_Reason) {
-      validationErrors.push("Please enter a Reason");
-    }
+    // if (!application_Reason) {
+    //   validationErrors.push("Please enter a Reason");
+    // }
   
     if (!leave_type_id) {
       validationErrors.push("Please select a Leave Type");
@@ -414,7 +407,7 @@ const editLeaveApplication = ({ token, query, roles }) => {
               </div>
             </div>
             <div className="row"> 
-              <div className="col-md-4 mt-4">
+                <div className="col-md-4 mt-4">
                   <TextField
                     onChange={(e) => {
                       setApproval_id(+e.target.value);
@@ -453,7 +446,7 @@ const editLeaveApplication = ({ token, query, roles }) => {
                     ))}
                   </TextField>
                 </div>
-                <div className="col-md-4 mt-4">
+                {/* <div className="col-md-4 mt-4">
                   <TextField
                     label="Reason"
                     variant="outlined"
@@ -464,7 +457,7 @@ const editLeaveApplication = ({ token, query, roles }) => {
                     onChange={(e) => setApplicationReason(e.target.value)}
                     className="shadow-input"
                   />
-                </div>
+                </div> */}
                 <div className="col-md-4 mt-4">
                   <TextField
                     label="Stay Locaton"
@@ -496,7 +489,7 @@ const editLeaveApplication = ({ token, query, roles }) => {
                     ))}
                   </TextField>
                 </div>
-                <div className="col-md-4 mt-4">
+                <div className="col-md-8 mt-4">
                   <RangePicker
                     showTime
                   // format="YYYY/MM/DD"

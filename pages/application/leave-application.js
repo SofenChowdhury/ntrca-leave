@@ -445,7 +445,7 @@ const leaveApplication = ({ token, roles }) => {
               background: "",
             }}
           >
-            <p>Upload file shown here</p>
+            <p>Upload file shown here (Optional)</p>
           </div>
           )
         }
