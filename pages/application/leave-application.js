@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Router from "next/router";
-import Link from "next/link";
+// import Link from "next/link";
 //redux imports
 import { connect } from "react-redux";
 
@@ -10,7 +10,7 @@ import { TextField, Button, Typography, useTheme, MenuItem, DateField } from "@m
 // import { DateField } from '@mui/x-date-pickers/DateField';
 // import { DateField } from '@mui/x-date-pickers';
 // import { DateField } from '@mui/x-date-pickers-pro';
-import AntdMomentWebpackPlugin from '@ant-design/moment-webpack-plugin';
+// import AntdMomentWebpackPlugin from '@ant-design/moment-webpack-plugin';
 
 //Alert
 import { toast } from "react-toastify";
@@ -18,8 +18,8 @@ import { toast } from "react-toastify";
 // Date
 import { DatePicker } from "antd";
 import dayjs from "dayjs";
-import Modal from '@mui/material/Modal';
-import Box from '@mui/material/Box';
+// import Modal from '@mui/material/Modal';
+// import Box from '@mui/material/Box';
 import CustomModal from "../../components/CustomModal/CustomModal";
 // import { DatePicker } from '@mui/x-date-pickers-pro';
 // import { DatePicker } from '@mui/x-date-pickers';
@@ -29,7 +29,7 @@ import CustomModal from "../../components/CustomModal/CustomModal";
 //axios
 import axios from "axios";
 import { BASE_URL } from "../../base";
-import TextArea from "antd/es/input/TextArea";
+// import TextArea from "antd/es/input/TextArea";
 //import MyDataTable from "../../components/data-table/MyDataTable";
 
 // import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
@@ -43,9 +43,9 @@ const leaveApplication = ({ token, roles }) => {
 
   const [approvalName,setApprovalName]=useState([]);
   const [approval_id,setApproval_id]=useState("");
-
-  const [reasons,setReasons]=useState([{id:1, name:"Physical Problen"},{id:2, name:"Family Issue"},{id:3, name:"Others"}]);
-  const [reason_id,setReason_id]=useState("");
+  const data= [{id:1, name:"Physical Problen"},{id:2, name:"Family Issue"},{id:3, name:"Others"}];
+  // const [reasons,setReasons]=useState([]);
+  // const [reason_id,setReason_id]=useState("");
 
   const [recorderName,setRecorderName]=useState([]);
   const [recorder_id,setRecorder_id]=useState("");
@@ -83,13 +83,13 @@ const leaveApplication = ({ token, roles }) => {
       "application/pdf"
     ];
     let files = e.target.files || e.dataTransfer.files;
-    console.log("files");
-    console.log(files);
-    console.log(files.length);
+    // console.log("files");
+    // console.log(files);
+    // console.log(files.length);
 
     if (files.length > 0) {
-      console.log("e.target.files[0].size");
-      console.log(e.target.files[0].size);
+      // console.log("e.target.files[0].size");
+      // console.log(e.target.files[0].size);
       if (e.target.files[0].size > 3 * 1000 * 1024){
         alert("File with maximum size of 3MB is allowed !!");
       }else{
@@ -205,7 +205,7 @@ const leaveApplication = ({ token, roles }) => {
     .then((res) => {
       // console.log(res);
      
-      if (res.data) {
+      if (res?.data) {
         setApprovedLeave(res.data);
       
       }
@@ -239,10 +239,10 @@ const leaveApplication = ({ token, roles }) => {
         headers: { Authorization: "Bearer " + token },
       })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
        
-        if (res.data) {
-          setLeaveType(res.data);
+        if (res?.data) {
+          setLeaveType(res?.data);
         
         }
       })
@@ -262,7 +262,7 @@ const leaveApplication = ({ token, roles }) => {
       })
       .then((res) => {
         if (res?.status === 200) {
-          console.log(res?.data);
+          // console.log(res?.data);
           setApprovalName(res?.data);
         
         }
@@ -311,16 +311,8 @@ const leaveApplication = ({ token, roles }) => {
   };
 
   const onSubmit = (e) => {
-    if (application_Reason == "Others") {
-      setApplicationReason(application_ReasonText);
-    }
     e.preventDefault();
     const validationErrors = [];
-
-    // Check each required field and update validationErrors array
-    // if (!approval_id) {
-    //   validationErrors.push("Please select an Approver Name");
-    // }
   
     if (!recorder_id) {
       validationErrors.push("Please select a Recorder Name");
@@ -360,7 +352,7 @@ const leaveApplication = ({ token, roles }) => {
   const handleSubmitConfirmation = () => {
     const application = {
       approval_id: approval_id,
-      reason: application_Reason,
+      reason: application_Reason === "Others" ? application_ReasonText : application_Reason,
       leave_type_id: leave_type_id,
       start: leaveStartDate,
       end: leaveEndDate,
@@ -372,21 +364,12 @@ const leaveApplication = ({ token, roles }) => {
     const config = {
       headers: { Authorization: `Bearer ${token}` },
     };
-
     axios.post(apiLeaveApplication, application, config).then((response) => {
       if (response?.status === 201) {
-        toast(`${response?.data?.message}`, { hideProgressBar: true, autoClose: 2000, type: 'success' })
-        if (response?.data?.status === 1) {
-          Router.push({
-            pathname: "/application/leave-application",
-          });
-        } else {
-          Router.push({
-            pathname: "/application/applied-list",
-          });
-        }
-      } else {
-        setFormErrors(Object.values(response.data.errors));
+        toast(`${response?.data?.message}`, { hideProgressBar: true, autoClose: 2000, type: 'success' });
+        Router.push({
+          pathname: "/application/applied-list",
+        });
       }
     });
 
@@ -529,59 +512,6 @@ const leaveApplication = ({ token, roles }) => {
           style={{ width: "100%" }}
           className="shadow-input"
         />
-        {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DemoContainer components={['DateRangePicker']}>
-              <DateRangePicker localeText={{ start: 'Check-in', end: 'Check-out' }} />
-            </DemoContainer>
-          </LocalizationProvider> */}
-        {/* <DatePicker label="Uncontrolled picker" defaultValue={dayjs('2022-04-17')} /> */}
-        {/* <DatePicker
-          label="Controlled picker"
-          // value={value}
-          onChange={(e) => setLeaveStartDateOnChange(e.target.value)}
-        /> */}
-        {/* <DatePicker
-          onChange={(e) => setLeaveStartDateOnChange(e.target.value)}
-          size="large"
-          // picker="month"
-          style={{ width: "100%" }}
-          className="shadow-input"
-          // disabledDate={disabledDate}
-          fullWidth
-        /> */}
-        {/* <TextField
-          label="Start Date"
-          variant="outlined"
-          size="small"
-          type="date"
-          fullWidth
-          onChange={(e) => setLeaveStartDateOnChange(e.target.value)}
-          className="shadow-input"
-        /> */}
-        {/* <DatePicker
-          label="Start Date"
-          views={"Start Date"}
-          variant="outlined"
-          size="large"
-          style={{ width: "100%" }}
-          fullWidth
-          // value={leaveStartDate}
-          onChange={(e) => setLeaveStartDateOnChange(e.target.value)}
-          className="shadow-input"
-          defaultValue={"Start"}
-        /> */}
-        {/* <div className="col-md-4 mt-4">
-        <DatePicker
-          label="End Date"
-          variant="outlined"
-          size="large"
-          // type="text"
-          style={{ width: "100%" }}
-          fullWidth
-          onChange={(e) => setLeaveEndDateOnChange(e.target.value)}
-          className="shadow-input"
-        />
-      </div> */}
       </div>
     </div>
     <div className="row mt-4">
@@ -618,7 +548,7 @@ const leaveApplication = ({ token, roles }) => {
           value={application_Reason || ""}
           className="shadow-input"
         >
-          {reasons?.map((option, index) => (
+          {data?.map((option, index) => (
             <MenuItem key={index} value={option?.name}>
               {option?.name}
             </MenuItem>
@@ -626,15 +556,15 @@ const leaveApplication = ({ token, roles }) => {
         </TextField> 
 
         { (application_Reason == "Others") &&
-          <TextArea
+          <TextField
+            multiline
+            rows={5}
             label="Reason"
             variant="outlined"
             size="small"
-            type="text"
             fullWidth
             onChange={(e) => setApplicationReasonText(e?.target?.value)}
             className="shadow-input mt-3"
-            style={{height:"300px"}}
             placeholder="Enter reason here..."
           /> 
         }
@@ -672,7 +602,7 @@ const leaveApplication = ({ token, roles }) => {
         selectedLeaveType={selectedLeaveType}
         selectedStartDate={selectedStartDate}
         selectedEndDate={selectedEndDate}
-        application_Reason={application_Reason}
+        application_Reason={application_ReasonText === "" ? application_Reason : application_ReasonText}
         stayLocation={stayLocation}
         numberOfDays={numberOfDays}
         handleSubmitConfirmation={handleSubmitConfirmation}

@@ -186,7 +186,7 @@ th {
   width: 100%;
   height: 100vh;
   position: fixed;
-  background: rgb(253, 251, 251) url("")
+  background: rgb(253, 251, 251)
     center no-repeat;
   z-index: 1;
 }
